@@ -82,7 +82,7 @@ def test_mod(a, b, res):
 def test_log2(a, res):
     assert log2(a) == res
 
-    
+
 @pytest.mark.parametrize(
     ('a', 'res'), [ 
         (2, 2),
@@ -94,3 +94,4 @@ def test_log2(a, res):
 )
 def test_modulo(a, res):
     assert modulo(a) == res
+
