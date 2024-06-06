@@ -2,8 +2,8 @@ name: Python calculator tests
 
 on:
   push:
-    tags:
-      - 'v*.*.*'
+    branches:
+      - main
 
 permissions:
   contents: write
