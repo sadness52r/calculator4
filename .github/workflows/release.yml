@@ -1,0 +1,49 @@
+name: Python calculator tests
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-n-publish:
+    name: Build and publish
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v2
+      - name: Install Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.10"
+
+      - name: Building
+        run: |
+          python -m compileall .
+
+      - name: Make zip directory
+        run: |
+          mkdir compiled
+          mv **/*.pyc compiled
+          zip -r compiled.zip compiled
+
+      - name: Create GitHub Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+        with:
+          tag_name: Tag v. ${{ github.run_number }}
+          release_name: Release n. ${{ github.run_number }}
+          draft: false
+          prerelease: false
+
+      - name: Publishing
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./compiled.zip
+          asset_name: compiled.zip
+          asset_content_type: application/zip
