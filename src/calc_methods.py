@@ -30,6 +30,7 @@ def mod(a: int, b: int) -> int:
     return a % b
 
 
+# log2 func: log2(2) -> 1
 def log2(a: int) -> float:
     if a > 0:
         return math.log2(a)
