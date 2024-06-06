@@ -35,3 +35,8 @@ def log2(a: int) -> float:
     if a > 0:
         return math.log2(a)
     return 999999999999999999999
+
+
+# modulo func: abs(-2) -> 2
+def modulo(a: int) -> int:
+    return abs(a)
