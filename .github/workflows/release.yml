@@ -26,7 +26,6 @@ jobs:
       - name: Building
         run: |
           python -m compileall .
-
       - name: Make zip directory
         run: |
           mkdir compiled
