@@ -27,5 +27,6 @@ def mod(a: int, b: int) -> int:
     return a % b
 
 
+# modulo func: abs(-2) -> 2
 def modulo(a: int) -> int:
     return abs(a)
