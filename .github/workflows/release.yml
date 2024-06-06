@@ -6,7 +6,7 @@ on:
       - main
     tags:
       - 'v*.*.*'
-      
+
 jobs:
   build-n-publish:
     name: Build and publish
@@ -28,7 +28,6 @@ jobs:
           mkdir compiled
           mv **/*.pyc compiled
           zip -r compiled.zip compiled
-
       - name: Create GitHub Release
         id: create_release
         uses: actions/create-release@v1
