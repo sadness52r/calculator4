@@ -56,9 +56,9 @@ jobs:
 
          - name: Create new tag
            run: |
-             new_tag=${{ steps.bump_version.outputs.new_tag }}
-             git tag $new_tag
-             git push origin $new_tag
+              new_tag=${{ steps.bump_version.outputs.new_tag }}
+              git tag $new_tag
+              git push origin $new_tag
 
       - name: Create GitHub Release
         id: create_release
