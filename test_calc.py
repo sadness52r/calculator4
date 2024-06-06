@@ -84,7 +84,7 @@ def test_log2(a, res):
 
 
 @pytest.mark.parametrize(
-    ('a', 'res'), [ 
+    ('a', 'res'), [
         (2, 2),
         (0, 0),
         (-4, 4),
