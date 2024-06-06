@@ -38,14 +38,14 @@ jobs:
       - name: Get the latest tag
         id: get_latest_tag
         run: |
-          latest_tag=$(git describe --tags `git rev-list --tags --max-count=1`)
+          latest_tag=$(git describe --tags $(git rev-list --tags --max-count=1) 2>/dev/null || echo "v0.0.0")
           echo "Latest tag: $latest_tag"
-          echo "::set-output name=latest_tag::$latest_tag"
+          echo "latest_tag=$latest_tag" >> $GITHUB_ENV
 
       - name: Bump version
         id: bump_version
         run: |
-          latest_tag=${{ steps.get_latest_tag.outputs.latest_tag }}
+          latest_tag=${{ env.latest_tag }}
           if [[ $latest_tag =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
             IFS='.' read -r -a parts <<< "${latest_tag:1}"
             major=${parts[0]}
@@ -57,11 +57,11 @@ jobs:
             new_tag="v1.0.0"
           fi
           echo "New tag: $new_tag"
-          echo "::set-output name=new_tag::$new_tag"
+          echo "new_tag=$new_tag" >> $GITHUB_ENV
 
       - name: Create new tag
         run: |
-          new_tag=${{ steps.bump_version.outputs.new_tag }}
+          new_tag=${{ env.new_tag }}
           git tag $new_tag
           git push origin $new_tag
 
