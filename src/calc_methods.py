@@ -1,3 +1,6 @@
+import math
+
+
 # summ func: 1 + 1 -> 2
 def summ(a: int, b: int) -> int:
     return a + b
@@ -25,3 +28,9 @@ def mod(a: int, b: int) -> int:
     if b == 0:
         return 999999999999999999998
     return a % b
+
+
+def log2(a: int) -> float:
+    if a > 0:
+        return math.log2(a)
+    return 999999999999999999999
