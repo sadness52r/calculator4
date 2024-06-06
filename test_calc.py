@@ -1,5 +1,5 @@
 import pytest
-from src.calc_methods import summ, sub, mult, div, mod, modulo
+from src.calc_methods import summ, sub, mult, div, mod, log2, modulo
 
 
 @pytest.mark.parametrize(
@@ -68,6 +68,19 @@ def test_div(a, b, res):
 )
 def test_mod(a, b, res):
     assert mod(a, b) == res
+
+
+@pytest.mark.parametrize(
+    ('a', 'res'), [
+        (2, 1),
+        (0, 999999999999999999999),
+        (1, 0),
+        (-4, 999999999999999999999),
+        (8, 3),
+    ]
+)
+def test_log2(a, res):
+    assert log2(a) == res
 
 
 @pytest.mark.parametrize(
