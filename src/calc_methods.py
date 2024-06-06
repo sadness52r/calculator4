@@ -25,3 +25,8 @@ def mod(a: int, b: int) -> int:
     if b == 0:
         return 999999999999999999998
     return a % b
+
+
+# modulo func: abs(-2) -> 2
+def modulo(a: int) -> int:
+    return abs(a)
