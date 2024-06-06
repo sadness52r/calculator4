@@ -94,4 +94,3 @@ def test_log2(a, res):
 )
 def test_modulo(a, res):
     assert modulo(a) == res
-
